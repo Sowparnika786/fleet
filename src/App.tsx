@@ -24,6 +24,7 @@ import { GuidedDemoModal } from './components/GuidedDemoModal';
 import { SmartMatchModal } from './components/SmartMatchModal';
 import { SafetyPassportModal } from './components/SafetyPassportModal';
 import { AutoRecoveryModal } from './components/AutoRecoveryModal';
+import { PaletteBanner } from './components/PaletteBanner';
 
 export const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('overview');
@@ -110,6 +111,8 @@ export const App: React.FC = () => {
 
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <PaletteBanner />
+
         {activeTab === 'overview' && (
           <DispatchOverview
             vehicles={vehicles}
