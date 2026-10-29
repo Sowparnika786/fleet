@@ -1,0 +1,12 @@
+node_modules/
+dist/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.DS_Store
+*.log
+backend/*.db-journal
+backend/*.db-wal
+backend/*.db-shm
+*.db
