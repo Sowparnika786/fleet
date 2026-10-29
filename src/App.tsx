@@ -69,6 +69,10 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     refreshAllData();
+    const timer = setInterval(() => {
+      refreshAllData();
+    }, 20000);
+    return () => clearInterval(timer);
   }, []);
 
   // Handle Reset Demo

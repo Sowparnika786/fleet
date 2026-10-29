@@ -171,7 +171,7 @@ export const SmartMatchModal: React.FC<SmartMatchModalProps> = ({
                     <h5 className="text-[11px] font-mono text-slate-500 uppercase font-semibold mb-2">
                       Multi-Factor Evaluation Criteria:
                     </h5>
-                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5">
                       
                       <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
                         <span className="text-[10px] text-slate-500 flex items-center gap-1 font-semibold">

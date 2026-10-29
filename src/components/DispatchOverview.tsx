@@ -42,28 +42,30 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
       <FleetPulse pulseData={pulseData} loading={loading} />
 
       {/* Signature Intelligence Hub Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
         {/* Hub 1: Double-Booking Attack Lab */}
         <div 
           onClick={() => setActiveTab('attack-lab')}
-          className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer group"
+          className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between h-full"
         >
-          <div className="flex items-center justify-between mb-3">
-            <span className="p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 group-hover:scale-105 transition-transform">
-              <Flame className="w-5 h-5" />
-            </span>
-            <span className="text-[10px] font-mono text-rose-600 uppercase tracking-widest font-bold">
-              CONCURRENCY LAB
-            </span>
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <span className="p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 group-hover:scale-105 transition-transform">
+                <Flame className="w-5 h-5" />
+              </span>
+              <span className="text-[10px] font-mono text-rose-600 uppercase tracking-widest font-bold">
+                CONCURRENCY LAB
+              </span>
+            </div>
+            <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+              Double-Booking Attack Lab
+            </h3>
+            <p className="text-xs text-slate-500 mt-1 line-clamp-2">
+              Stress-test high-concurrency race conditions live with 20+ simultaneous threads.
+            </p>
           </div>
-          <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
-            Double-Booking Attack Lab
-          </h3>
-          <p className="text-xs text-slate-500 mt-1 line-clamp-2">
-            Stress-test high-concurrency race conditions live with 20+ simultaneous threads.
-          </p>
-          <div className="mt-4 flex items-center text-xs font-mono text-emerald-600 font-bold group-hover:translate-x-1 transition-transform">
+          <div className="mt-4 pt-3 border-t border-slate-100 flex items-center text-xs font-mono text-emerald-600 font-bold group-hover:translate-x-1 transition-transform">
             <span>Launch Stress Probe</span>
             <ArrowRight className="w-3.5 h-3.5 ml-1" />
           </div>
@@ -72,23 +74,25 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
         {/* Hub 2: Fleet Time Machine */}
         <div 
           onClick={() => setActiveTab('time-machine')}
-          className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer group"
+          className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between h-full"
         >
-          <div className="flex items-center justify-between mb-3">
-            <span className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 group-hover:scale-105 transition-transform">
-              <Clock className="w-5 h-5" />
-            </span>
-            <span className="text-[10px] font-mono text-emerald-700 uppercase tracking-widest font-bold">
-              TEMPORAL AI
-            </span>
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <span className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 group-hover:scale-105 transition-transform">
+                <Clock className="w-5 h-5" />
+              </span>
+              <span className="text-[10px] font-mono text-emerald-700 uppercase tracking-widest font-bold">
+                TEMPORAL AI
+              </span>
+            </div>
+            <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+              Fleet Time Machine
+            </h3>
+            <p className="text-xs text-slate-500 mt-1 line-clamp-2">
+              Interactive 48-hour past-to-future scrubber with battery depletion curves.
+            </p>
           </div>
-          <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
-            Fleet Time Machine
-          </h3>
-          <p className="text-xs text-slate-500 mt-1 line-clamp-2">
-            Interactive 48-hour past-to-future scrubber with battery depletion curves.
-          </p>
-          <div className="mt-4 flex items-center text-xs font-mono text-emerald-600 font-bold group-hover:translate-x-1 transition-transform">
+          <div className="mt-4 pt-3 border-t border-slate-100 flex items-center text-xs font-mono text-emerald-600 font-bold group-hover:translate-x-1 transition-transform">
             <span>Scrub Timeline</span>
             <ArrowRight className="w-3.5 h-3.5 ml-1" />
           </div>
@@ -97,23 +101,25 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
         {/* Hub 3: Availability Heatmap */}
         <div 
           onClick={() => setActiveTab('heatmap')}
-          className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer group"
+          className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between h-full"
         >
-          <div className="flex items-center justify-between mb-3">
-            <span className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 group-hover:scale-105 transition-transform">
-              <BarChart3 className="w-5 h-5" />
-            </span>
-            <span className="text-[10px] font-mono text-emerald-700 uppercase tracking-widest font-bold">
-              168-HR MATRIX
-            </span>
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <span className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 group-hover:scale-105 transition-transform">
+                <BarChart3 className="w-5 h-5" />
+              </span>
+              <span className="text-[10px] font-mono text-emerald-700 uppercase tracking-widest font-bold">
+                168-HR MATRIX
+              </span>
+            </div>
+            <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+              Availability Heatmap
+            </h3>
+            <p className="text-xs text-slate-500 mt-1 line-clamp-2">
+              7-day x 24-hour capacity strain matrix identifying peak strain and idle pockets.
+            </p>
           </div>
-          <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
-            Availability Heatmap
-          </h3>
-          <p className="text-xs text-slate-500 mt-1 line-clamp-2">
-            7-day x 24-hour capacity strain matrix identifying peak strain and idle pockets.
-          </p>
-          <div className="mt-4 flex items-center text-xs font-mono text-emerald-600 font-bold group-hover:translate-x-1 transition-transform">
+          <div className="mt-4 pt-3 border-t border-slate-100 flex items-center text-xs font-mono text-emerald-600 font-bold group-hover:translate-x-1 transition-transform">
             <span>Inspect Capacity</span>
             <ArrowRight className="w-3.5 h-3.5 ml-1" />
           </div>
@@ -122,23 +128,25 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
         {/* Hub 4: Dispatch Black Box */}
         <div 
           onClick={() => setActiveTab('black-box')}
-          className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer group"
+          className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between h-full"
         >
-          <div className="flex items-center justify-between mb-3">
-            <span className="p-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 group-hover:scale-105 transition-transform">
-              <Terminal className="w-5 h-5 text-emerald-600" />
-            </span>
-            <span className="text-[10px] font-mono text-slate-600 uppercase tracking-widest font-bold">
-              SHA-256 CHAIN
-            </span>
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <span className="p-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 group-hover:scale-105 transition-transform">
+                <Terminal className="w-5 h-5 text-emerald-600" />
+              </span>
+              <span className="text-[10px] font-mono text-slate-600 uppercase tracking-widest font-bold">
+                SHA-256 CHAIN
+              </span>
+            </div>
+            <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+              Dispatch Black Box
+            </h3>
+            <p className="text-xs text-slate-500 mt-1 line-clamp-2">
+              Immutable flight-recorder audit trail with cryptographic tamper verification.
+            </p>
           </div>
-          <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
-            Dispatch Black Box
-          </h3>
-          <p className="text-xs text-slate-500 mt-1 line-clamp-2">
-            Immutable flight-recorder audit trail with cryptographic tamper verification.
-          </p>
-          <div className="mt-4 flex items-center text-xs font-mono text-emerald-600 font-bold group-hover:translate-x-1 transition-transform">
+          <div className="mt-4 pt-3 border-t border-slate-100 flex items-center text-xs font-mono text-emerald-600 font-bold group-hover:translate-x-1 transition-transform">
             <span>Audit Ledger</span>
             <ArrowRight className="w-3.5 h-3.5 ml-1" />
           </div>
@@ -174,21 +182,21 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
                 pendingDeliveries.slice(0, 3).map((d) => (
                   <div 
                     key={d.id}
-                    className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between hover:border-emerald-300 transition-all"
+                    className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between hover:border-emerald-300 transition-all gap-3"
                   >
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <div className="flex items-center space-x-2">
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white text-slate-700 border border-slate-200">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white text-slate-700 border border-slate-200 shrink-0">
                           {d.id}
                         </span>
-                        <span className={`text-[10px] font-bold px-2 py-0.2 rounded-full ${
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 ${
                           d.priority === 'Urgent' ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                         }`}>
                           {d.priority}
                         </span>
                       </div>
-                      <h4 className="text-sm font-bold text-slate-900 mt-1">{d.title}</h4>
-                      <p className="text-xs text-slate-500">{d.cargo_type} • {d.weight_kg}kg</p>
+                      <h4 className="text-sm font-bold text-slate-900 mt-1 truncate">{d.title}</h4>
+                      <p className="text-xs text-slate-500 truncate">{d.cargo_type} • {d.weight_kg}kg</p>
                     </div>
 
                     <button
@@ -244,16 +252,16 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
                 activeMissions.slice(0, 3).map((asn) => (
                   <div 
                     key={asn.id}
-                    className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between hover:border-emerald-300 transition-all"
+                    className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between hover:border-emerald-300 transition-all gap-3"
                   >
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <div className="flex items-center space-x-2">
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white text-slate-700 border border-slate-200">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white text-slate-700 border border-slate-200 shrink-0">
                           {asn.id}
                         </span>
-                        <span className="text-xs text-slate-900 font-bold">{asn.vehicle_model}</span>
+                        <span className="text-xs text-slate-900 font-bold truncate">{asn.vehicle_model}</span>
                       </div>
-                      <p className="text-xs text-slate-500 mt-1">
+                      <p className="text-xs text-slate-500 mt-1 truncate">
                         Operator: {asn.driver_name} • Est. Arrival {new Date(asn.scheduled_end).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </p>
                     </div>

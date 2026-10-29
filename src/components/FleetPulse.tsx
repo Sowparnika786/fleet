@@ -71,19 +71,21 @@ export const FleetPulse: React.FC<FleetPulseProps> = ({ pulseData, loading }) =>
       </div>
 
       {/* Five Primary KPIs */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-3.5 mb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 mb-4">
         
         {/* KPI 1: Active Fleet Utilization */}
-        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition-all">
-          <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
-            <span>Fleet Utilization</span>
-            <Activity className="w-3.5 h-3.5 text-emerald-600" />
+        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition-all min-w-0 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
+              <span className="font-medium truncate pr-1">Fleet Utilization</span>
+              <Activity className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+            </div>
+            <div className="flex items-baseline space-x-1.5 flex-wrap">
+              <span className="text-2xl font-bold font-mono text-slate-900">{pulseData.active_utilization_pct}%</span>
+              <span className="text-[11px] text-slate-500">({pulseData.active_in_transit}/{pulseData.fleet_size})</span>
+            </div>
           </div>
-          <div className="flex items-baseline space-x-1.5">
-            <span className="text-2xl font-bold font-mono text-slate-900">{pulseData.active_utilization_pct}%</span>
-            <span className="text-[11px] text-slate-500">({pulseData.active_in_transit}/{pulseData.fleet_size})</span>
-          </div>
-          <div className="w-full bg-slate-200 h-1.5 rounded-full mt-2 overflow-hidden">
+          <div className="w-full bg-slate-200 h-1.5 rounded-full mt-2.5 overflow-hidden">
             <div 
               className="bg-emerald-500 h-full rounded-full transition-all duration-700"
               style={{ width: `${Math.max(5, pulseData.active_utilization_pct)}%` }}
@@ -92,56 +94,64 @@ export const FleetPulse: React.FC<FleetPulseProps> = ({ pulseData, loading }) =>
         </div>
 
         {/* KPI 2: Carbon Emissions Avoided */}
-        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition-all">
-          <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
-            <span>CO2e Avoided</span>
-            <Leaf className="w-3.5 h-3.5 text-emerald-600" />
+        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition-all min-w-0 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
+              <span className="font-medium truncate pr-1">CO2e Avoided</span>
+              <Leaf className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+            </div>
+            <div className="flex items-baseline space-x-1">
+              <span className="text-2xl font-bold font-mono text-emerald-700 truncate">{pulseData.carbon_emissions_avoided_kg.toLocaleString()}</span>
+              <span className="text-xs text-slate-500 font-bold shrink-0">kg</span>
+            </div>
           </div>
-          <div className="flex items-baseline space-x-1">
-            <span className="text-2xl font-bold font-mono text-emerald-700">{pulseData.carbon_emissions_avoided_kg.toLocaleString()}</span>
-            <span className="text-xs text-slate-500 font-bold">kg</span>
-          </div>
-          <p className="text-[10px] text-emerald-700 font-medium mt-1 flex items-center gap-1">
-            <Sparkles className="w-2.5 h-2.5" /> 100% Zero-Emissions Fleet
+          <p className="text-[10px] text-emerald-700 font-medium mt-2 flex items-center gap-1 truncate">
+            <Sparkles className="w-2.5 h-2.5 shrink-0" /> Zero-Emissions Fleet
           </p>
         </div>
 
         {/* KPI 3: SLA On-Time Reliability */}
-        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition-all">
-          <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
-            <span>SLA On-Time Rate</span>
-            <Clock className="w-3.5 h-3.5 text-emerald-600" />
+        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition-all min-w-0 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
+              <span className="font-medium truncate pr-1">SLA On-Time Rate</span>
+              <Clock className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+            </div>
+            <div className="flex items-baseline space-x-1">
+              <span className="text-2xl font-bold font-mono text-slate-900">{pulseData.sla_on_time_rate_pct}%</span>
+            </div>
           </div>
-          <div className="flex items-baseline space-x-1">
-            <span className="text-2xl font-bold font-mono text-slate-900">{pulseData.sla_on_time_rate_pct}%</span>
-          </div>
-          <p className="text-[10px] text-slate-500 mt-1 font-medium">Guaranteed SLA Window</p>
+          <p className="text-[10px] text-slate-500 mt-2 font-medium truncate">Guaranteed SLA Window</p>
         </div>
 
         {/* KPI 4: Driver Safety Index */}
-        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition-all">
-          <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
-            <span>Avg Safety Index</span>
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition-all min-w-0 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
+              <span className="font-medium truncate pr-1">Avg Safety Index</span>
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+            </div>
+            <div className="flex items-baseline space-x-1">
+              <span className="text-2xl font-bold font-mono text-slate-900">{pulseData.average_safety_index}</span>
+              <span className="text-xs text-slate-500 shrink-0">/100</span>
+            </div>
           </div>
-          <div className="flex items-baseline space-x-1">
-            <span className="text-2xl font-bold font-mono text-slate-900">{pulseData.average_safety_index}</span>
-            <span className="text-xs text-slate-500">/100</span>
-          </div>
-          <p className="text-[10px] text-emerald-700 font-medium mt-1">Zero Incident Flags</p>
+          <p className="text-[10px] text-emerald-700 font-medium mt-2 truncate">Zero Incident Flags</p>
         </div>
 
         {/* KPI 5: Fatigue Headroom */}
-        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition-all">
-          <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
-            <span>Avg Fatigue Index</span>
-            <AlertTriangle className="w-3.5 h-3.5 text-amber-500" />
+        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition-all min-w-0 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
+              <span className="font-medium truncate pr-1">Avg Fatigue Index</span>
+              <AlertTriangle className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+            </div>
+            <div className="flex items-baseline space-x-1">
+              <span className="text-2xl font-bold font-mono text-slate-900">{pulseData.average_fatigue_index}</span>
+              <span className="text-xs text-slate-500 shrink-0">/100</span>
+            </div>
           </div>
-          <div className="flex items-baseline space-x-1">
-            <span className="text-2xl font-bold font-mono text-slate-900">{pulseData.average_fatigue_index}</span>
-            <span className="text-xs text-slate-500">/100</span>
-          </div>
-          <p className="text-[10px] text-slate-500 mt-1 font-medium">Optimal Readiness</p>
+          <p className="text-[10px] text-slate-500 mt-2 font-medium truncate">Optimal Readiness</p>
         </div>
 
       </div>

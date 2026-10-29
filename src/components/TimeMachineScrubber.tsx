@@ -32,8 +32,13 @@ export const TimeMachineScrubber: React.FC = () => {
   };
 
   useEffect(() => {
-    loadSnapshot(offsetHours);
-  }, [offsetHours]);
+    // When auto-playing, load immediately; when scrubbing, debounce by 150ms to eliminate UI stutter
+    const delay = isPlaying ? 0 : 150;
+    const timer = setTimeout(() => {
+      loadSnapshot(offsetHours);
+    }, delay);
+    return () => clearTimeout(timer);
+  }, [offsetHours, isPlaying]);
 
   useEffect(() => {
     let timer: any;
