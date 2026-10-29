@@ -276,7 +276,10 @@ def list_deliveries(status: Optional[str] = None):
 @app.post("/api/deliveries", response_model=DeliveryResponse, status_code=status.HTTP_201_CREATED)
 def create_delivery(payload: DeliveryCreate):
     deliv_id = payload.id or f"DEL-{uuid.uuid4().hex[:4].upper()}"
-    now_str = datetime.now(timezone.utc).isoformat()
+    now_dt = datetime.now(timezone.utc)
+    now_str = now_dt.isoformat()
+    tw_start = payload.time_window_start or now_str
+    tw_end = payload.time_window_end or (now_dt + timedelta(hours=4)).isoformat()
     with get_db() as conn:
         cursor = conn.cursor()
         cursor.execute("""
@@ -291,7 +294,7 @@ def create_delivery(payload: DeliveryCreate):
             payload.destination_address, payload.destination_lat, payload.destination_lng,
             payload.cargo_type, payload.weight_kg, payload.volume_m3,
             json.dumps(payload.required_certifications), payload.priority,
-            payload.time_window_start, payload.time_window_end, payload.estimated_distance_km,
+            tw_start, tw_end, payload.estimated_distance_km,
             payload.sla_penalty_rate_hr, payload.status, now_str
         ))
         log_black_box(conn, "DELIVERY", deliv_id, "CARGO_COMMISSIONED", "INFO", "CARGO_PORTAL", {"title": payload.title, "priority": payload.priority})
@@ -386,11 +389,15 @@ def get_safety_passport(assignment_id: str):
 
 # ----------------- SIGNATURE FEATURE 2: EXPLAINABLE SMART MATCH -----------------
 
+@app.get("/api/smart-match", response_model=SmartMatchResponse)
 @app.get("/api/smart-match/{delivery_id}", response_model=SmartMatchResponse)
-def get_smart_match(delivery_id: str):
+def get_smart_match(delivery_id: Optional[str] = None, q_delivery_id: Optional[str] = Query(None, alias="delivery_id")):
+    target_id = delivery_id or q_delivery_id
+    if not target_id:
+        raise HTTPException(status_code=400, detail="delivery_id parameter is required")
     with get_db() as conn:
         try:
-            return evaluate_smart_match(conn, delivery_id)
+            return evaluate_smart_match(conn, target_id)
         except ValueError as e:
             raise HTTPException(status_code=404, detail=str(e))
 

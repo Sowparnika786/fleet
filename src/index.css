@@ -4,116 +4,54 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'Space Grotesk', monospace;
 
-  /* SAGE: Calming botanical eucalyptus and operational sage */
-  --color-sage-100: #e8eee9;
-  --color-sage-200: #cdd9cf;
-  --color-sage-300: #adc2b1;
-  --color-sage-400: #8ea894;
-  --color-sage-500: #728f79;
-  --color-sage-600: #597360;
-  --color-sage-700: #465b4c;
-  --color-sage-800: #38493d;
-  --color-sage-900: #2b382f;
-
-  /* SAND: Warm champagne, desert linen, and luxury gold-sand */
-  --color-sand-50: #faf7f4;
-  --color-sand-100: #f5efea;
-  --color-sand-200: #eadfc5;
-  --color-sand-300: #d6c6b4;
-  --color-sand-400: #bea88e;
-  --color-sand-500: #a89074;
-  --color-sand-600: #8c745c;
-  --color-sand-700: #6e5946;
-  --color-sand-800: #524233;
-  --color-sand-900: #3b2f24;
-
-  /* EMERALD: Regal deep jewel and luminous high-tech mint */
-  --color-emerald-300: #6ee7b7;
-  --color-emerald-400: #34d399;
+  --color-emerald-50: #ecfdf5;
+  --color-emerald-100: #d1fae5;
+  --color-emerald-200: #a7f3d0;
   --color-emerald-500: #10b981;
   --color-emerald-600: #059669;
   --color-emerald-700: #047857;
   --color-emerald-800: #065f46;
   --color-emerald-900: #064e3b;
-  --color-emerald-950: #022c22;
-
-  /* PLUM: Majestic velvet aubergine and deep moody royal plum */
-  --color-plum-200: #eddced;
-  --color-plum-300: #dbb7db;
-  --color-plum-400: #c48fc4;
-  --color-plum-500: #a867a8;
-  --color-plum-600: #8c4b8c;
-  --color-plum-700: #733c73;
-  --color-plum-800: #5c2e5c;
-  --color-plum-900: #4a234b;
-  --color-plum-950: #2c122d;
-
-  /* STONE: Polished obsidian, slate rock, and charcoal frames */
-  --color-stone-800: #1f2530;
-  --color-stone-850: #171c25;
-  --color-stone-900: #10141c;
-  --color-stone-950: #0a0d13;
 }
 
-/* Atmospheric Multi-Layered Palette Canvas */
+/* Crisp Clean White and Emerald Green Canvas */
 body {
-  background-color: #0d1117;
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(114, 143, 121, 0.16) 0px, transparent 45%),
-    radial-gradient(at 100% 0%, rgba(115, 60, 115, 0.18) 0px, transparent 45%),
-    radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.08) 0px, transparent 55%),
-    radial-gradient(at 10% 90%, rgba(214, 198, 180, 0.12) 0px, transparent 40%),
-    radial-gradient(at 90% 90%, rgba(74, 35, 75, 0.15) 0px, transparent 50%);
-  background-attachment: fixed;
-  color: #f5efea;
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Luxury Cinematic Glassmorphism with Sand & Sage Highlights */
+/* Modern Clean White Cards & Panels */
 .glass-panel {
-  background: rgba(16, 20, 28, 0.78);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(214, 198, 180, 0.14);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
 }
 
 .glass-panel-elevated {
-  background: rgba(23, 29, 39, 0.88);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(214, 198, 180, 0.18);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(245, 239, 234, 0.08);
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Luminous Glow Tokens */
+/* Clean Emerald Focus and Shadows */
 .glow-emerald {
-  box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.25);
 }
 
-.glow-plum {
-  box-shadow: 0 0 30px rgba(140, 75, 140, 0.3);
-}
-
-.glow-sand {
-  box-shadow: 0 0 25px rgba(234, 223, 197, 0.2);
-}
-
-.glow-sage {
-  box-shadow: 0 0 25px rgba(142, 168, 148, 0.25);
-}
-
-/* Scrollbars in Sage & Sand */
+/* Crisp Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d1117;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #465b4c;
+  background: #cbd5e1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #728f79;
+  background: #94a3b8;
 }

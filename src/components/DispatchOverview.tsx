@@ -47,23 +47,23 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
         {/* Hub 1: Double-Booking Attack Lab */}
         <div 
           onClick={() => setActiveTab('attack-lab')}
-          className="glass-panel-elevated p-5 rounded-2xl border border-red-500/30 hover:border-red-400 transition-all cursor-pointer group relative overflow-hidden"
+          className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer group"
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="p-2 rounded-xl bg-red-950/60 border border-red-500/40 text-red-400 group-hover:scale-110 transition-transform">
+            <span className="p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 group-hover:scale-105 transition-transform">
               <Flame className="w-5 h-5" />
             </span>
-            <span className="text-[10px] font-mono text-red-400 uppercase tracking-widest font-bold">
+            <span className="text-[10px] font-mono text-rose-600 uppercase tracking-widest font-bold">
               CONCURRENCY LAB
             </span>
           </div>
-          <h3 className="text-base font-bold text-white group-hover:text-red-300 transition-colors">
+          <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
             Double-Booking Attack Lab
           </h3>
-          <p className="text-xs text-[#a3bdab] mt-1 line-clamp-2">
+          <p className="text-xs text-slate-500 mt-1 line-clamp-2">
             Stress-test high-concurrency race conditions live with 20+ simultaneous threads.
           </p>
-          <div className="mt-4 flex items-center text-xs font-mono text-red-400 font-semibold group-hover:translate-x-1 transition-transform">
+          <div className="mt-4 flex items-center text-xs font-mono text-emerald-600 font-bold group-hover:translate-x-1 transition-transform">
             <span>Launch Stress Probe</span>
             <ArrowRight className="w-3.5 h-3.5 ml-1" />
           </div>
@@ -72,23 +72,23 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
         {/* Hub 2: Fleet Time Machine */}
         <div 
           onClick={() => setActiveTab('time-machine')}
-          className="glass-panel-elevated p-5 rounded-2xl border border-[#c48fc4]/30 hover:border-[#dbb7db] transition-all cursor-pointer group relative overflow-hidden"
+          className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer group"
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="p-2 rounded-xl bg-[#4a2545]/60 border border-[#c48fc4]/40 text-[#dbb7db] group-hover:scale-110 transition-transform">
+            <span className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 group-hover:scale-105 transition-transform">
               <Clock className="w-5 h-5" />
             </span>
-            <span className="text-[10px] font-mono text-[#dbb7db] uppercase tracking-widest font-bold">
+            <span className="text-[10px] font-mono text-emerald-700 uppercase tracking-widest font-bold">
               TEMPORAL AI
             </span>
           </div>
-          <h3 className="text-base font-bold text-white group-hover:text-[#dbb7db] transition-colors">
+          <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
             Fleet Time Machine
           </h3>
-          <p className="text-xs text-[#a3bdab] mt-1 line-clamp-2">
-            Interactive 48-hour past-to-future scrubber with battery depletion trajectories.
+          <p className="text-xs text-slate-500 mt-1 line-clamp-2">
+            Interactive 48-hour past-to-future scrubber with battery depletion curves.
           </p>
-          <div className="mt-4 flex items-center text-xs font-mono text-[#dbb7db] font-semibold group-hover:translate-x-1 transition-transform">
+          <div className="mt-4 flex items-center text-xs font-mono text-emerald-600 font-bold group-hover:translate-x-1 transition-transform">
             <span>Scrub Timeline</span>
             <ArrowRight className="w-3.5 h-3.5 ml-1" />
           </div>
@@ -97,23 +97,23 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
         {/* Hub 3: Availability Heatmap */}
         <div 
           onClick={() => setActiveTab('heatmap')}
-          className="glass-panel-elevated p-5 rounded-2xl border border-[#10b981]/30 hover:border-[#34d399] transition-all cursor-pointer group relative overflow-hidden"
+          className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer group"
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="p-2 rounded-xl bg-[#10b981]/20 border border-[#10b981]/40 text-[#10b981] group-hover:scale-110 transition-transform">
+            <span className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 group-hover:scale-105 transition-transform">
               <BarChart3 className="w-5 h-5" />
             </span>
-            <span className="text-[10px] font-mono text-[#34d399] uppercase tracking-widest font-bold">
+            <span className="text-[10px] font-mono text-emerald-700 uppercase tracking-widest font-bold">
               168-HR MATRIX
             </span>
           </div>
-          <h3 className="text-base font-bold text-white group-hover:text-[#34d399] transition-colors">
+          <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
             Availability Heatmap
           </h3>
-          <p className="text-xs text-[#a3bdab] mt-1 line-clamp-2">
+          <p className="text-xs text-slate-500 mt-1 line-clamp-2">
             7-day x 24-hour capacity strain matrix identifying peak strain and idle pockets.
           </p>
-          <div className="mt-4 flex items-center text-xs font-mono text-[#34d399] font-semibold group-hover:translate-x-1 transition-transform">
+          <div className="mt-4 flex items-center text-xs font-mono text-emerald-600 font-bold group-hover:translate-x-1 transition-transform">
             <span>Inspect Capacity</span>
             <ArrowRight className="w-3.5 h-3.5 ml-1" />
           </div>
@@ -122,23 +122,23 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
         {/* Hub 4: Dispatch Black Box */}
         <div 
           onClick={() => setActiveTab('black-box')}
-          className="glass-panel-elevated p-5 rounded-2xl border border-[#e8dfd5]/20 hover:border-[#10b981] transition-all cursor-pointer group relative overflow-hidden"
+          className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer group"
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="p-2 rounded-xl bg-[#161b22] border border-[#e8dfd5]/10 text-[#d6c6b4] group-hover:scale-110 transition-transform">
-              <Terminal className="w-5 h-5 text-[#10b981]" />
+            <span className="p-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 group-hover:scale-105 transition-transform">
+              <Terminal className="w-5 h-5 text-emerald-600" />
             </span>
-            <span className="text-[10px] font-mono text-[#a3bdab] uppercase tracking-widest font-bold">
+            <span className="text-[10px] font-mono text-slate-600 uppercase tracking-widest font-bold">
               SHA-256 CHAIN
             </span>
           </div>
-          <h3 className="text-base font-bold text-white group-hover:text-white transition-colors">
+          <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
             Dispatch Black Box
           </h3>
-          <p className="text-xs text-[#a3bdab] mt-1 line-clamp-2">
+          <p className="text-xs text-slate-500 mt-1 line-clamp-2">
             Immutable flight-recorder audit trail with cryptographic tamper verification.
           </p>
-          <div className="mt-4 flex items-center text-xs font-mono text-[#10b981] font-semibold group-hover:translate-x-1 transition-transform">
+          <div className="mt-4 flex items-center text-xs font-mono text-emerald-600 font-bold group-hover:translate-x-1 transition-transform">
             <span>Audit Ledger</span>
             <ArrowRight className="w-3.5 h-3.5 ml-1" />
           </div>
@@ -150,18 +150,18 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
         {/* Left Column: Pending Urgent Consignments */}
-        <div className="glass-panel-elevated rounded-2xl p-6 border border-[#e8dfd5]/12 flex flex-col justify-between">
+        <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between">
           <div>
-            <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#e8dfd5]/10">
+            <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
               <div className="flex items-center space-x-2">
-                <Package className="w-5 h-5 text-[#10b981]" />
-                <h3 className="text-sm font-bold font-mono text-white uppercase tracking-wider">
+                <Package className="w-5 h-5 text-emerald-600" />
+                <h3 className="text-sm font-bold font-mono text-slate-900 uppercase tracking-wider">
                   PENDING CARGO CONSIGNMENTS ({pendingDeliveries.length})
                 </h3>
               </div>
               <button 
                 onClick={() => setActiveTab('deliveries')}
-                className="text-xs font-mono text-[#34d399] hover:underline"
+                className="text-xs font-mono text-emerald-700 font-semibold hover:underline cursor-pointer"
               >
                 View All Manifests →
               </button>
@@ -169,31 +169,31 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
 
             <div className="space-y-3">
               {pendingDeliveries.length === 0 ? (
-                <p className="text-xs text-[#a3bdab] py-8 text-center">No pending consignments.</p>
+                <p className="text-xs text-slate-400 py-8 text-center">No pending consignments.</p>
               ) : (
                 pendingDeliveries.slice(0, 3).map((d) => (
                   <div 
                     key={d.id}
-                    className="p-3.5 rounded-xl bg-[#0b0e14]/70 border border-[#e8dfd5]/8 flex items-center justify-between hover:border-[#10b981]/30 transition-all"
+                    className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between hover:border-emerald-300 transition-all"
                   >
                     <div>
                       <div className="flex items-center space-x-2">
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#161b22] text-[#a3bdab]">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white text-slate-700 border border-slate-200">
                           {d.id}
                         </span>
                         <span className={`text-[10px] font-bold px-2 py-0.2 rounded-full ${
-                          d.priority === 'Urgent' ? 'bg-red-950/60 text-red-400' : 'bg-[#10b981]/15 text-[#34d399]'
+                          d.priority === 'Urgent' ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                         }`}>
                           {d.priority}
                         </span>
                       </div>
-                      <h4 className="text-sm font-bold text-white mt-1">{d.title}</h4>
-                      <p className="text-xs text-[#7d9f88]">{d.cargo_type} • {d.weight_kg}kg</p>
+                      <h4 className="text-sm font-bold text-slate-900 mt-1">{d.title}</h4>
+                      <p className="text-xs text-slate-500">{d.cargo_type} • {d.weight_kg}kg</p>
                     </div>
 
                     <button
                       onClick={() => onOpenSmartMatch(d)}
-                      className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#10b981] to-[#047857] hover:from-[#34d399] hover:to-[#059669] text-white text-xs font-bold shadow-md shadow-[#10b981]/20 transition-all cursor-pointer shrink-0"
+                      className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-xs transition-all cursor-pointer shrink-0"
                     >
                       <Zap className="w-3.5 h-3.5" />
                       <span>Smart Match</span>
@@ -204,25 +204,25 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
             </div>
           </div>
 
-          <div className="pt-4 mt-4 border-t border-[#e8dfd5]/10 text-xs text-[#7d9f88] flex items-center justify-between font-mono">
-            <span>Available Vehicles: <strong className="text-white">{availableVehicles.length}</strong></span>
-            <span>Available Drivers: <strong className="text-white">{drivers.filter(dr => dr.status === 'Available').length}</strong></span>
+          <div className="pt-4 mt-4 border-t border-slate-100 text-xs text-slate-500 flex items-center justify-between font-mono">
+            <span>Available Vehicles: <strong className="text-slate-900">{availableVehicles.length}</strong></span>
+            <span>Available Drivers: <strong className="text-slate-900">{drivers.filter(dr => dr.status === 'Available').length}</strong></span>
           </div>
         </div>
 
         {/* Right Column: Active In-Transit Missions */}
-        <div className="glass-panel-elevated rounded-2xl p-6 border border-[#e8dfd5]/12 flex flex-col justify-between">
+        <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between">
           <div>
-            <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#e8dfd5]/10">
+            <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
               <div className="flex items-center space-x-2">
-                <ShieldCheck className="w-5 h-5 text-[#dbb7db]" />
-                <h3 className="text-sm font-bold font-mono text-white uppercase tracking-wider">
+                <ShieldCheck className="w-5 h-5 text-emerald-600" />
+                <h3 className="text-sm font-bold font-mono text-slate-900 uppercase tracking-wider">
                   ACTIVE MISSIONS & PASSPORTS ({activeMissions.length})
                 </h3>
               </div>
               <button 
                 onClick={() => setActiveTab('assignments')}
-                className="text-xs font-mono text-[#dbb7db] hover:underline"
+                className="text-xs font-mono text-emerald-700 font-semibold hover:underline cursor-pointer"
               >
                 Track All Missions →
               </button>
@@ -231,10 +231,10 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
             <div className="space-y-3">
               {activeMissions.length === 0 ? (
                 <div className="py-8 text-center space-y-2">
-                  <p className="text-xs text-[#a3bdab]">No active missions currently in transit.</p>
+                  <p className="text-xs text-slate-400">No active missions currently in transit.</p>
                   <button
                     onClick={onOpenDemo}
-                    className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-[#4a2545] text-white text-xs font-semibold"
+                    className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-emerald-600 text-white text-xs font-semibold cursor-pointer"
                   >
                     <Zap className="w-3.5 h-3.5" />
                     <span>Launch Guided Tour</span>
@@ -244,23 +244,23 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
                 activeMissions.slice(0, 3).map((asn) => (
                   <div 
                     key={asn.id}
-                    className="p-3.5 rounded-xl bg-[#0b0e14]/70 border border-[#e8dfd5]/8 flex items-center justify-between hover:border-[#10b981]/30 transition-all"
+                    className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between hover:border-emerald-300 transition-all"
                   >
                     <div>
                       <div className="flex items-center space-x-2">
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#161b22] text-[#34d399]">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white text-slate-700 border border-slate-200">
                           {asn.id}
                         </span>
-                        <span className="text-xs text-white font-bold">{asn.vehicle_model}</span>
+                        <span className="text-xs text-slate-900 font-bold">{asn.vehicle_model}</span>
                       </div>
-                      <p className="text-xs text-[#7d9f88] mt-1">
+                      <p className="text-xs text-slate-500 mt-1">
                         Operator: {asn.driver_name} • Est. Arrival {new Date(asn.scheduled_end).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </p>
                     </div>
 
                     <button
                       onClick={() => onViewPassport(asn.id)}
-                      className="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-[#161b22] border border-[#10b981]/40 text-[#34d399] hover:bg-[#10b981]/20 text-xs font-mono transition-all cursor-pointer shrink-0"
+                      className="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-700 hover:bg-emerald-100 text-xs font-mono font-bold transition-all cursor-pointer shrink-0"
                     >
                       <Award className="w-3.5 h-3.5" />
                       <span>{asn.passport_score} pts</span>
@@ -271,9 +271,9 @@ export const DispatchOverview: React.FC<DispatchOverviewProps> = ({
             </div>
           </div>
 
-          <div className="pt-4 mt-4 border-t border-[#e8dfd5]/10 text-xs text-[#7d9f88] flex items-center justify-between font-mono">
+          <div className="pt-4 mt-4 border-t border-slate-100 text-xs text-slate-500 flex items-center justify-between font-mono">
             <span>Guaranteed Zero Concurrency Collisions</span>
-            <span className="text-[#34d399]">WAL Mode Active</span>
+            <span className="text-emerald-700 font-bold">WAL Mode Active</span>
           </div>
         </div>
 

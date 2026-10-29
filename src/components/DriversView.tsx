@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   Users, Plus, Search, ShieldCheck, AlertTriangle, 
-  Clock, Award, Phone, Mail, X, Check, Trash2
+  Phone, X, Trash2
 } from 'lucide-react';
 import { Driver } from '../types';
 import { createDriver, updateDriver } from '../api';
@@ -68,24 +68,24 @@ export const DriversView: React.FC<DriversViewProps> = ({ drivers, onRefresh }) 
     <div className="space-y-6">
       
       {/* Top Banner & Action */}
-      <div className="glass-panel-elevated rounded-2xl p-6 border border-[#e8dfd5]/12 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center space-x-2 mb-1">
-            <span className="p-1.5 rounded-lg bg-[#4a2545]/40 border border-[#c48fc4]/30 text-[#dbb7db]">
+          <div className="flex items-center space-x-2.5 mb-1">
+            <span className="p-2 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700">
               <Users className="w-5 h-5" />
             </span>
-            <h2 className="text-xl font-bold text-white tracking-wide font-mono">
+            <h2 className="text-xl font-bold text-slate-900 tracking-tight font-mono">
               OPERATOR ROSTER // CERTIFIED DRIVER CORPS
             </h2>
           </div>
-          <p className="text-xs text-[#a3bdab]">
+          <p className="text-xs text-slate-500">
             Telemetric safety indices, real-time duty hours, biometric fatigue tracking, and cargo endorsements.
           </p>
         </div>
 
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#4a2545] to-[#733c73] hover:from-[#5c2f5c] hover:to-[#8c4b8c] text-white text-xs font-bold shadow-lg shadow-[#4a2545]/30 border border-[#c48fc4]/30 transition-all cursor-pointer"
+          className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-xs transition-all cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Onboard Certified Operator</span>
@@ -93,30 +93,30 @@ export const DriversView: React.FC<DriversViewProps> = ({ drivers, onRefresh }) 
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="glass-panel rounded-xl p-4 border border-[#e8dfd5]/8 flex flex-col sm:flex-row gap-3 justify-between">
+      <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-xs flex flex-col sm:flex-row gap-3 justify-between">
         <div className="relative w-full sm:w-80">
-          <Search className="w-4 h-4 text-[#7d9f88] absolute left-3 top-2.5" />
+          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
           <input
             type="text"
             placeholder="Search by name, license, or endorsement..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-[#161b22] border border-[#e8dfd5]/12 rounded-xl pl-9 pr-3 py-1.5 text-xs text-white placeholder-[#7d9f88] focus:outline-none focus:border-[#10b981]"
+            className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-emerald-500 focus:bg-white"
           />
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-1.5 overflow-x-auto">
           {['', 'Available', 'On Duty', 'Off Duty', 'Fatigued'].map((st) => (
             <button
               key={st}
               onClick={() => setStatusFilter(st)}
               className={`px-3 py-1 rounded-lg text-xs font-mono transition-all cursor-pointer ${
                 statusFilter === st
-                  ? 'bg-[#10b981]/20 text-[#34d399] border border-[#10b981]/40 font-bold'
-                  : 'bg-[#161b22] text-[#a3bdab] border border-[#e8dfd5]/5 hover:text-white'
+                  ? 'bg-emerald-50 text-emerald-800 border border-emerald-300 font-bold shadow-xs'
+                  : 'bg-slate-50 text-slate-600 border border-slate-200 hover:bg-slate-100 hover:text-slate-900'
               }`}
             >
-              {st || 'All Statuses'}
+              {st || 'All Operators'}
             </button>
           ))}
         </div>
@@ -133,24 +133,24 @@ export const DriversView: React.FC<DriversViewProps> = ({ drivers, onRefresh }) 
           return (
             <div 
               key={d.id}
-              className="glass-panel rounded-2xl p-5 border border-[#e8dfd5]/8 hover:border-[#10b981]/30 transition-all flex flex-col justify-between"
+              className="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs hover:border-emerald-300 transition-all flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <h3 className="text-base font-bold text-white">{d.name}</h3>
-                    <p className="text-xs font-mono text-[#a3bdab]">{d.license_number}</p>
+                    <h3 className="text-base font-bold text-slate-900">{d.name}</h3>
+                    <p className="text-xs font-mono text-slate-500">{d.license_number}</p>
                   </div>
                   <button
                     onClick={() => handleToggleStatus(d)}
-                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full border transition-all cursor-pointer ${
+                    className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border transition-all cursor-pointer ${
                       isAvailable 
-                        ? 'bg-[#10b981]/15 text-[#34d399] border-[#10b981]/40 hover:bg-[#10b981]/30' 
+                        ? 'bg-emerald-50 text-emerald-700 border-emerald-300 hover:bg-emerald-100' 
                         : isOnDuty
-                        ? 'bg-[#4a2545]/40 text-[#f4eaf4] border-[#c48fc4]/40 hover:bg-[#4a2545]/60'
+                        ? 'bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100'
                         : isFatigued
-                        ? 'bg-red-950/40 text-red-400 border-red-500/40'
-                        : 'bg-[#1c222c] text-[#a3bdab] border-[#e8dfd5]/10'
+                        ? 'bg-rose-50 text-rose-700 border-rose-200'
+                        : 'bg-slate-100 text-slate-600 border-slate-200'
                     }`}
                   >
                     {d.status}
@@ -158,41 +158,41 @@ export const DriversView: React.FC<DriversViewProps> = ({ drivers, onRefresh }) 
                 </div>
 
                 {/* Score and Hours Metrics */}
-                <div className="space-y-2 py-3 border-t border-b border-[#e8dfd5]/5 text-xs font-mono">
+                <div className="space-y-2 py-3 border-t border-b border-slate-100 text-xs font-mono">
                   <div className="grid grid-cols-2 gap-2">
                     <div>
-                      <span className="text-[10px] text-[#7d9f88] flex items-center gap-1">
-                        <ShieldCheck className="w-3 h-3 text-[#10b981]" /> Safety Rating:
+                      <span className="text-[10px] text-slate-400 flex items-center gap-1">
+                        <ShieldCheck className="w-3 h-3 text-emerald-600" /> Safety Rating:
                       </span>
-                      <p className="text-white font-bold text-sm">{d.safety_score}/100</p>
+                      <p className="text-slate-800 font-bold text-sm">{d.safety_score}/100</p>
                     </div>
                     <div>
-                      <span className="text-[10px] text-[#7d9f88] flex items-center gap-1">
-                        <AlertTriangle className="w-3 h-3 text-[#dbb7db]" /> Fatigue Index:
+                      <span className="text-[10px] text-slate-400 flex items-center gap-1">
+                        <AlertTriangle className="w-3 h-3 text-amber-500" /> Fatigue Index:
                       </span>
-                      <p className="text-[#dbb7db] font-bold text-sm">{d.fatigue_score}/100</p>
+                      <p className="text-slate-800 font-bold text-sm">{d.fatigue_score}/100</p>
                     </div>
                   </div>
 
                   {/* Daily Duty Hours Progress Bar */}
                   <div className="pt-1">
-                    <div className="flex justify-between text-[10px] text-[#a3bdab] mb-1">
+                    <div className="flex justify-between text-[10px] text-slate-500 mb-1">
                       <span>Daily Hours Logged:</span>
-                      <span className="text-white font-bold">{d.hours_logged_today}h / {d.max_daily_hours}h</span>
+                      <span className="text-slate-800 font-bold">{d.hours_logged_today}h / {d.max_daily_hours}h</span>
                     </div>
-                    <div className="w-full bg-[#1c222c] h-1.5 rounded-full overflow-hidden">
+                    <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                       <div 
                         className={`h-full rounded-full ${
-                          dutyPct > 85 ? 'bg-amber-400' : 'bg-[#10b981]'
+                          dutyPct > 85 ? 'bg-amber-500' : 'bg-emerald-500'
                         }`}
                         style={{ width: `${Math.min(100, dutyPct)}%` }}
                       />
                     </div>
                   </div>
 
-                  <div className="text-[11px] text-[#7d9f88] flex items-center gap-2 pt-1">
+                  <div className="text-[11px] text-slate-500 flex items-center gap-2 pt-1">
                     <span className="flex items-center gap-1">
-                      <Phone className="w-3 h-3" /> {d.contact_phone}
+                      <Phone className="w-3 h-3 text-slate-400" /> {d.contact_phone}
                     </span>
                   </div>
                 </div>
@@ -200,7 +200,7 @@ export const DriversView: React.FC<DriversViewProps> = ({ drivers, onRefresh }) 
                 {/* Certifications Badges */}
                 <div className="flex flex-wrap gap-1 mt-3">
                   {d.certifications.map((c, i) => (
-                    <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#161b22] text-[#34d399] border border-[#10b981]/20">
+                    <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
                       {c}
                     </span>
                   ))}
@@ -208,9 +208,9 @@ export const DriversView: React.FC<DriversViewProps> = ({ drivers, onRefresh }) 
               </div>
 
               {/* Card Footer */}
-              <div className="mt-4 pt-3 border-t border-[#e8dfd5]/5 text-xs font-mono text-[#7d9f88] flex justify-between items-center">
+              <div className="mt-4 pt-3 border-t border-slate-100 text-xs font-mono text-slate-400 flex justify-between items-center">
                 <span>Operator ID: {d.id}</span>
-                <span className="text-[10px] text-[#a3bdab]">Click status to toggle</span>
+                <span className="text-[10px] text-emerald-600 font-semibold">Click badge to toggle</span>
               </div>
 
             </div>
@@ -220,14 +220,14 @@ export const DriversView: React.FC<DriversViewProps> = ({ drivers, onRefresh }) 
 
       {/* Onboard Operator Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in">
-          <div className="glass-panel-elevated w-full max-w-lg rounded-2xl border border-[#4a2545]/60 shadow-2xl p-6 relative">
-            <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#e8dfd5]/10">
-              <h3 className="text-base font-bold text-white font-mono flex items-center gap-2">
-                <Users className="w-4 h-4 text-[#dbb7db]" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in">
+          <div className="bg-white w-full max-w-lg rounded-2xl border border-slate-200 shadow-xl p-6 relative">
+            <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-200">
+              <h3 className="text-base font-bold text-slate-900 font-mono flex items-center gap-2">
+                <Users className="w-5 h-5 text-emerald-600" />
                 ONBOARD CERTIFIED OPERATOR
               </h3>
-              <button onClick={() => setIsModalOpen(false)} className="text-[#a3bdab] hover:text-white">
+              <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-700 cursor-pointer">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -235,63 +235,63 @@ export const DriversView: React.FC<DriversViewProps> = ({ drivers, onRefresh }) 
             <form onSubmit={handleCreateDriver} className="space-y-4 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[#a3bdab] mb-1 font-mono">Full Name</label>
+                  <label className="block text-slate-700 font-semibold mb-1 font-mono">Full Name</label>
                   <input
                     required
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Maya Lin"
-                    className="w-full bg-[#161b22] border border-[#e8dfd5]/15 rounded-lg p-2 text-white focus:outline-none focus:border-[#10b981]"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:border-emerald-500 focus:bg-white text-xs"
                   />
                 </div>
                 <div>
-                  <label className="block text-[#a3bdab] mb-1 font-mono">License Number</label>
+                  <label className="block text-slate-700 font-semibold mb-1 font-mono">License Number</label>
                   <input
                     required
                     type="text"
                     value={formData.license_number}
                     onChange={(e) => setFormData({ ...formData, license_number: e.target.value })}
                     placeholder="e.g. CA-DL-99210"
-                    className="w-full bg-[#161b22] border border-[#e8dfd5]/15 rounded-lg p-2 text-white focus:outline-none focus:border-[#10b981]"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:border-emerald-500 focus:bg-white text-xs"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[#a3bdab] mb-1 font-mono">Contact Phone</label>
+                  <label className="block text-slate-700 font-semibold mb-1 font-mono">Contact Phone</label>
                   <input
                     type="text"
                     value={formData.contact_phone}
                     onChange={(e) => setFormData({ ...formData, contact_phone: e.target.value })}
-                    className="w-full bg-[#161b22] border border-[#e8dfd5]/15 rounded-lg p-2 text-white focus:outline-none focus:border-[#10b981]"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:border-emerald-500 focus:bg-white text-xs"
                   />
                 </div>
                 <div>
-                  <label className="block text-[#a3bdab] mb-1 font-mono">Official Email</label>
+                  <label className="block text-slate-700 font-semibold mb-1 font-mono">Official Email</label>
                   <input
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="operator@fleetnexus.io"
-                    className="w-full bg-[#161b22] border border-[#e8dfd5]/15 rounded-lg p-2 text-white focus:outline-none focus:border-[#10b981]"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:border-emerald-500 focus:bg-white text-xs"
                   />
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#e8dfd5]/10 flex justify-end space-x-2">
+              <div className="pt-4 border-t border-slate-200 flex justify-end space-x-2">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-[#161b22] text-[#a3bdab] hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 font-semibold text-xs cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={creating}
-                  className="px-5 py-2 rounded-lg bg-gradient-to-r from-[#4a2545] to-[#733c73] hover:from-[#5c2f5c] hover:to-[#8c4b8c] text-white font-bold"
+                  className="px-5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs cursor-pointer disabled:opacity-50"
                 >
                   {creating ? 'Onboarding...' : 'Register Operator'}
                 </button>

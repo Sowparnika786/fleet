@@ -34,6 +34,10 @@ def evaluate_smart_match(conn: sqlite3.Connection, delivery_id: str) -> Dict[str
         # Check basic vehicle feasibility
         if v["capacity_kg"] < delivery["weight_kg"] or v["volume_m3"] < delivery["volume_m3"]:
             continue
+
+        cargo_type = delivery.get("cargo_type", "Standard")
+        if cargo_type == "Cold Chain" and not any("Cold" in f or "Cryo" in f or "Refrigerat" in f for f in v_features):
+            continue
             
         # Distance from vehicle location to delivery origin
         veh_origin_dist = calculate_distance(v["current_location_lat"], v["current_location_lng"], delivery["origin_lat"], delivery["origin_lng"])

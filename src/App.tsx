@@ -97,7 +97,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0e14] text-[#e5ddd0] flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
       
       {/* Top Navbar */}
       <Navbar
@@ -111,8 +111,6 @@ export const App: React.FC = () => {
 
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <PaletteBanner />
-
         {activeTab === 'overview' && (
           <DispatchOverview
             vehicles={vehicles}
@@ -164,18 +162,18 @@ export const App: React.FC = () => {
         {activeTab === 'black-box' && <BlackBoxViewer />}
       </main>
 
-      {/* Luxury Footer */}
-      <footer className="border-t border-[#e8dfd5]/8 bg-[#0a0d13] py-6 text-xs text-[#7d9f88] font-mono">
+      {/* Clean White & Emerald Footer */}
+      <footer className="border-t border-slate-200 bg-white py-6 text-xs text-slate-500 font-mono">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-2">
-            <span className="w-2 h-2 rounded-full bg-[#10b981]" />
-            <span className="text-white font-bold tracking-wider">FLEETWISE NEXUS</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+            <span className="text-slate-900 font-bold tracking-wider">FLEETWISE NEXUS</span>
             <span>// AUTONOMOUS DISPATCH ORCHESTRATION</span>
           </div>
           <div className="flex items-center space-x-6 text-[11px]">
             <span>FastAPI + SQLite WAL</span>
             <span>React 19 + TypeScript</span>
-            <span className="text-[#34d399]">100% Zero-Collision Guarantee</span>
+            <span className="text-emerald-600 font-semibold">100% Zero-Collision Guarantee</span>
           </div>
         </div>
       </footer>

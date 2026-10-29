@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Clock, Play, Pause, RotateCcw, AlertTriangle, 
-  BatteryCharging, MapPin, Truck, ChevronRight, Zap
+  BatteryCharging, MapPin, Truck
 } from 'lucide-react';
 import { fetchTimeMachineSnapshot } from '../api';
 import { Vehicle } from '../types';
@@ -19,7 +19,6 @@ export const TimeMachineScrubber: React.FC = () => {
   } | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  // Load snapshot on offset change
   const loadSnapshot = async (offset: number) => {
     setLoading(true);
     try {
@@ -36,7 +35,6 @@ export const TimeMachineScrubber: React.FC = () => {
     loadSnapshot(offsetHours);
   }, [offsetHours]);
 
-  // Playback timer loop
   useEffect(() => {
     let timer: any;
     if (isPlaying) {
@@ -70,39 +68,39 @@ export const TimeMachineScrubber: React.FC = () => {
     <div className="space-y-6">
       
       {/* Header Banner */}
-      <div className="glass-panel-elevated rounded-2xl p-6 border border-[#e8dfd5]/12 relative overflow-hidden">
+      <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="flex items-center space-x-2 mb-1">
-              <span className="p-1.5 rounded-lg bg-[#4a2545]/50 border border-[#c48fc4]/30 text-[#f4eaf4]">
-                <Clock className="w-4 h-4 text-[#dbb7db]" />
+            <div className="flex items-center space-x-2.5 mb-1">
+              <span className="p-2 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700">
+                <Clock className="w-5 h-5" />
               </span>
-              <h2 className="text-xl font-bold text-white tracking-wide font-mono">
+              <h2 className="text-xl font-bold text-slate-900 tracking-tight font-mono">
                 FLEET TIME MACHINE // TEMPORAL SIMULATION
               </h2>
             </div>
-            <p className="text-xs text-[#a3bdab] max-w-xl">
+            <p className="text-xs text-slate-500 max-w-xl">
               Scrub across -24h to +24h to observe fleet trajectories, battery SoC curves, mission progress, and bottleneck forecasts.
             </p>
           </div>
 
           {/* Temporal Time Display Badge */}
-          <div className="bg-[#0b0e14] px-4 py-2.5 rounded-xl border border-[#10b981]/30 flex flex-col items-start md:items-end">
-            <span className="text-[10px] font-mono font-semibold uppercase tracking-widest text-[#10b981]">
+          <div className="bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 flex flex-col items-start md:items-end">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700">
               {formatOffsetLabel(offsetHours)}
             </span>
-            <span className="text-sm font-bold font-mono text-white mt-0.5">
+            <span className="text-sm font-bold font-mono text-slate-900 mt-0.5">
               {formattedTimestamp}
             </span>
           </div>
         </div>
 
         {/* Interactive Scrubber Controls */}
-        <div className="mt-8 pt-6 border-t border-[#e8dfd5]/10 space-y-4">
-          <div className="flex items-center justify-between text-xs font-mono text-[#a3bdab]">
-            <span>-24h (Past Shift Log)</span>
-            <span className="text-[#34d399] font-bold">T = 0h (PRESENT)</span>
-            <span>+24h (Predictive Simulation)</span>
+        <div className="mt-8 pt-6 border-t border-slate-100 space-y-4">
+          <div className="flex items-center justify-between text-xs font-mono text-slate-500 font-semibold">
+            <span>-24h (Past Shift)</span>
+            <span className="text-emerald-700 font-bold">T = 0h (PRESENT)</span>
+            <span>+24h (Simulation)</span>
           </div>
 
           {/* Range Slider */}
@@ -117,7 +115,7 @@ export const TimeMachineScrubber: React.FC = () => {
                 setIsPlaying(false);
                 setOffsetHours(parseFloat(e.target.value));
               }}
-              className="w-full h-2.5 bg-[#1c222c] rounded-lg appearance-none cursor-pointer accent-[#10b981]"
+              className="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
             />
           </div>
 
@@ -128,10 +126,10 @@ export const TimeMachineScrubber: React.FC = () => {
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   isPlaying 
-                    ? 'bg-[#4a2545] text-white border border-[#c48fc4]/40' 
-                    : 'bg-[#10b981] text-[#0b0e14] hover:bg-[#34d399]'
+                    ? 'bg-slate-800 text-white' 
+                    : 'bg-emerald-600 text-white hover:bg-emerald-700'
                 }`}
               >
                 {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
@@ -141,7 +139,7 @@ export const TimeMachineScrubber: React.FC = () => {
               <button
                 onClick={() => { setIsPlaying(false); setOffsetHours(0); }}
                 title="Reset to Present Live"
-                className="p-1.5 rounded-lg bg-[#161b22] border border-[#e8dfd5]/10 text-[#a3bdab] hover:text-white transition-all cursor-pointer"
+                className="p-1.5 rounded-lg bg-slate-100 border border-slate-200 text-slate-600 hover:text-slate-900 transition-all cursor-pointer"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
@@ -149,28 +147,28 @@ export const TimeMachineScrubber: React.FC = () => {
 
             {/* Presets */}
             <div className="flex items-center space-x-2 overflow-x-auto text-xs">
-              <span className="text-[11px] text-[#7d9f88] uppercase font-mono mr-1">Presets:</span>
+              <span className="text-[11px] text-slate-400 uppercase font-mono mr-1 font-semibold">Presets:</span>
               <button
                 onClick={() => { setIsPlaying(false); setOffsetHours(-12); }}
-                className="px-2.5 py-1 rounded-md bg-[#161b22] border border-[#e8dfd5]/10 text-xs text-[#e8dfd5] hover:border-[#10b981]/40"
+                className="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-xs text-slate-700 hover:bg-slate-200 font-medium cursor-pointer"
               >
                 -12h Shift
               </button>
               <button
                 onClick={() => { setIsPlaying(false); setOffsetHours(0); }}
-                className="px-2.5 py-1 rounded-md bg-[#10b981]/20 border border-[#10b981]/40 text-xs text-[#34d399] font-semibold"
+                className="px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-300 text-xs text-emerald-800 font-bold cursor-pointer"
               >
                 Now Live
               </button>
               <button
                 onClick={() => { setIsPlaying(false); setOffsetHours(4); }}
-                className="px-2.5 py-1 rounded-md bg-[#161b22] border border-[#e8dfd5]/10 text-xs text-[#e8dfd5] hover:border-[#10b981]/40"
+                className="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-xs text-slate-700 hover:bg-slate-200 font-medium cursor-pointer"
               >
                 +4h Peak
               </button>
               <button
                 onClick={() => { setIsPlaying(false); setOffsetHours(12); }}
-                className="px-2.5 py-1 rounded-md bg-[#161b22] border border-[#e8dfd5]/10 text-xs text-[#e8dfd5] hover:border-[#10b981]/40"
+                className="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-xs text-slate-700 hover:bg-slate-200 font-medium cursor-pointer"
               >
                 +12h Tomorrow
               </button>
@@ -186,11 +184,11 @@ export const TimeMachineScrubber: React.FC = () => {
           {snapshot.bottlenecks.map((b, idx) => (
             <div 
               key={idx}
-              className="p-3.5 rounded-xl bg-[#4a2545]/30 border border-[#c48fc4]/30 text-xs flex items-center space-x-3 text-[#f4eaf4]"
+              className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs flex items-center space-x-3 text-amber-900"
             >
-              <AlertTriangle className="w-4 h-4 text-[#dbb7db] shrink-0" />
+              <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
               <div>
-                <span className="font-bold font-mono mr-2 text-[#dbb7db]">[{b.time_slot} ADVISORY]:</span>
+                <span className="font-bold font-mono mr-2 text-amber-800">[{b.time_slot} ADVISORY]:</span>
                 <span>{b.message}</span>
               </div>
             </div>
@@ -201,12 +199,12 @@ export const TimeMachineScrubber: React.FC = () => {
       {/* Simulated Fleet Cards Grid */}
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-bold font-mono text-white uppercase tracking-wider flex items-center gap-2">
-            <Truck className="w-4 h-4 text-[#10b981]" />
+          <h3 className="text-sm font-bold font-mono text-slate-900 uppercase tracking-wider flex items-center gap-2">
+            <Truck className="w-4 h-4 text-emerald-600" />
             RECONSTRUCTED FLEET STATE // {snapshot?.simulated_vehicles?.length || 0} ASSETS
           </h3>
-          <span className="text-xs text-[#a3bdab] font-mono">
-            Active Missions: <span className="text-white font-bold">{snapshot?.active_assignments_count || 0}</span>
+          <span className="text-xs text-slate-500 font-mono">
+            Active Missions: <span className="text-slate-900 font-bold">{snapshot?.active_assignments_count || 0}</span>
           </span>
         </div>
 
@@ -220,50 +218,48 @@ export const TimeMachineScrubber: React.FC = () => {
             return (
               <div 
                 key={veh.id}
-                className="glass-panel rounded-xl p-4 border border-[#e8dfd5]/8 hover:border-[#10b981]/30 transition-all"
+                className="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs hover:border-emerald-300 transition-all"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-[#161b22] text-[#a3bdab] border border-[#e8dfd5]/10">
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
                       {veh.plate_number}
                     </span>
-                    <h4 className="text-sm font-bold text-white mt-1">{veh.model}</h4>
-                    <p className="text-[11px] text-[#7d9f88]">{veh.category}</p>
+                    <h4 className="text-sm font-bold text-slate-900 mt-1">{veh.model}</h4>
+                    <p className="text-[11px] text-slate-500">{veh.category}</p>
                   </div>
-                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
                     isTransit 
-                      ? 'bg-[#10b981]/15 text-[#34d399] border-[#10b981]/40' 
-                      : 'bg-[#1c222c] text-[#a3bdab] border-[#e8dfd5]/10'
+                      ? 'bg-emerald-50 text-emerald-700 border-emerald-300' 
+                      : 'bg-slate-100 text-slate-600 border-slate-200'
                   }`}>
                     {veh.status}
                   </span>
                 </div>
 
                 {/* Simulated Telemetry Readings */}
-                <div className="space-y-2 text-xs pt-2 border-t border-[#e8dfd5]/5">
-                  <div className="flex items-center justify-between text-[#a3bdab]">
+                <div className="space-y-2 text-xs pt-2 border-t border-slate-100 font-mono">
+                  <div className="flex items-center justify-between text-slate-600">
                     <span className="flex items-center gap-1.5">
-                      <BatteryCharging className="w-3.5 h-3.5 text-[#34d399]" />
+                      <BatteryCharging className="w-3.5 h-3.5 text-emerald-600" />
                       Simulated Battery:
                     </span>
-                    <span className="font-mono font-bold text-white">{battery}%</span>
+                    <span className="font-bold text-slate-900">{battery}%</span>
                   </div>
 
-                  <div className="w-full bg-[#1c222c] h-1.5 rounded-full overflow-hidden">
+                  <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                     <div 
-                      className={`h-full rounded-full transition-all duration-300 ${
-                        battery < 20 ? 'bg-red-500' : (battery < 50 ? 'bg-[#bea88e]' : 'bg-[#10b981]')
-                      }`}
+                      className="bg-emerald-500 h-full rounded-full transition-all duration-300"
                       style={{ width: `${battery}%` }}
                     />
                   </div>
 
-                  <div className="flex items-center justify-between text-[#a3bdab] text-[11px] pt-1">
+                  <div className="flex items-center justify-between text-slate-500 text-[11px] pt-1">
                     <span className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-[#7d9f88]" />
+                      <MapPin className="w-3 h-3 text-slate-400" />
                       Coordinates:
                     </span>
-                    <span className="font-mono text-white">{lat.toFixed(4)}, {lng.toFixed(4)}</span>
+                    <span className="font-mono text-slate-800">{lat.toFixed(4)}, {lng.toFixed(4)}</span>
                   </div>
                 </div>
 

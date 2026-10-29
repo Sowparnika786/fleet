@@ -75,20 +75,20 @@ class DriverResponse(DriverBase):
 
 class DeliveryBase(BaseModel):
     title: str
-    origin_address: str
-    origin_lat: float
-    origin_lng: float
-    destination_address: str
-    destination_lat: float
-    destination_lng: float
-    cargo_type: str
-    weight_kg: float
-    volume_m3: float
+    origin_address: str = "San Francisco Distribution Depot"
+    origin_lat: float = 37.7749
+    origin_lng: float = -122.4194
+    destination_address: str = "Palo Alto Tech Campus"
+    destination_lat: float = 37.4419
+    destination_lng: float = -122.1430
+    cargo_type: str = "General"
+    weight_kg: float = 500.0
+    volume_m3: float = 2.0
     required_certifications: List[str] = Field(default_factory=list)
     priority: str = "Normal"
-    time_window_start: str
-    time_window_end: str
-    estimated_distance_km: float
+    time_window_start: Optional[str] = None
+    time_window_end: Optional[str] = None
+    estimated_distance_km: float = 45.0
     sla_penalty_rate_hr: float = 50.0
     status: str = "Pending"
 
