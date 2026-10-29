@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   Zap, X, ChevronRight, ChevronLeft, ShieldCheck, Flame, 
-  Clock, CheckCircle2, ArrowRight
+  Clock, CheckCircle2, ArrowRight, MapPin
 } from 'lucide-react';
 
 interface GuidedDemoModalProps {
@@ -82,6 +82,15 @@ export const GuidedDemoModal: React.FC<GuidedDemoModalProps> = ({
       description: "Every state transition, dispatch decision, double-booking prevention, and failover is recorded in an immutable ledger chained with SHA-256 cryptographic hashes.",
       highlight: "Click 'Verify Cryptographic Chain' to mathematically prove 100% tamper-evident integrity across all system records.",
       actionLabel: "Verify Black Box Ledger"
+    },
+    {
+      title: "8. Live Fleet Map & Geospatial Telemetry",
+      badge: "GEOSPATIAL ROUTING",
+      icon: MapPin,
+      tab: "live-map",
+      description: "Interactive geospatial tracking powered by Leaflet, OpenStreetMap, and OSRM highway routing. Visualizes live vehicle assets with color-coded status pins, origin pickup depots, destination targets, and turn-by-turn road routes.",
+      highlight: "Select any consignment to trace its road route, calculate real-time distance and transit duration, and identify the assigned vehicle.",
+      actionLabel: "Open Live Fleet Map"
     }
   ];
 

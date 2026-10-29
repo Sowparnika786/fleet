@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   ShieldCheck, Clock, Zap, Flame, BarChart3, 
-  Terminal, Compass, Truck, Users, Package, RefreshCw, Key, FileText
+  Terminal, Compass, Truck, Users, Package, RefreshCw, Key, MapPin
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -23,6 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const navItems = [
     { id: 'overview', label: 'Command Center', icon: Compass },
+    { id: 'live-map', label: 'Live Fleet Map', icon: MapPin },
     { id: 'vehicles', label: 'Vehicles', icon: Truck },
     { id: 'drivers', label: 'Drivers', icon: Users },
     { id: 'deliveries', label: 'Deliveries', icon: Package },
@@ -83,18 +84,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Right Action Tools */}
           <div className="flex items-center space-x-2.5">
-            {/* Download Technical PDF */}
-            <a
-              href="/api/documentation/pdf"
-              target="_blank"
-              rel="noreferrer"
-              title="Download Technical Documentation PDF"
-              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-300 text-emerald-800 hover:bg-emerald-100 text-xs font-semibold shadow-xs transition-all cursor-pointer"
-            >
-              <FileText className="w-3.5 h-3.5 text-emerald-600" />
-              <span className="hidden md:inline">Docs PDF</span>
-            </a>
-
             {/* Command Palette Trigger */}
             <button
               onClick={onOpenCommandPalette}

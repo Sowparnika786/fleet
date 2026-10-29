@@ -19,6 +19,10 @@ import { AttackLab } from './components/AttackLab';
 import { AvailabilityHeatmap } from './components/AvailabilityHeatmap';
 import { BlackBoxViewer } from './components/BlackBoxViewer';
 
+const LiveFleetMap = React.lazy(() => 
+  import('./components/LiveFleetMap').then((m) => ({ default: m.LiveFleetMap }))
+);
+
 import { CommandPalette } from './components/CommandPalette';
 import { GuidedDemoModal } from './components/GuidedDemoModal';
 import { SmartMatchModal } from './components/SmartMatchModal';
@@ -128,6 +132,23 @@ export const App: React.FC = () => {
             onViewPassport={handleViewPassport}
             onOpenDemo={() => setIsDemoOpen(true)}
           />
+        )}
+
+        {activeTab === 'live-map' && (
+          <React.Suspense fallback={
+            <div className="bg-white rounded-2xl p-16 border border-slate-200 text-center space-y-3 shadow-xs">
+              <div className="w-8 h-8 rounded-full border-2 border-emerald-600 border-t-transparent animate-spin mx-auto" />
+              <p className="text-xs font-mono text-slate-500">Initializing Geospatial Tile & Marker Engine...</p>
+            </div>
+          }>
+            <LiveFleetMap
+              vehicles={vehicles}
+              deliveries={deliveries}
+              assignments={assignments}
+              drivers={drivers}
+              onRefresh={refreshAllData}
+            />
+          </React.Suspense>
         )}
 
         {activeTab === 'vehicles' && (

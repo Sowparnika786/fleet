@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Search, X, Flame, Clock, ShieldCheck, Terminal, 
-  BarChart3, RefreshCw, Zap, ArrowRight, Truck, Users, Package
+  BarChart3, RefreshCw, Zap, ArrowRight, Truck, Users, Package, MapPin
 } from 'lucide-react';
 
 interface CommandPaletteProps {
@@ -38,6 +38,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   if (!isOpen) return null;
 
   const actions = [
+    { id: 'live-map', title: 'Open Live Fleet Map // Geospatial Telemetry', category: 'Geospatial', icon: MapPin, action: () => { setActiveTab('live-map'); onClose(); } },
     { id: 'attack-lab', title: 'Launch Double-Booking Attack Lab', category: 'Intelligence', icon: Flame, action: () => { setActiveTab('attack-lab'); onClose(); } },
     { id: 'demo', title: 'Start Guided Demo Tour', category: 'Showcase', icon: Zap, action: () => { onOpenDemo(); onClose(); } },
     { id: 'time-machine', title: 'Open Fleet Time Machine Scrubber', category: 'Intelligence', icon: Clock, action: () => { setActiveTab('time-machine'); onClose(); } },
