@@ -1,8 +1,10 @@
+import os
 import json
 import uuid
 from datetime import datetime, timezone, timedelta
 from typing import List, Optional, Dict, Any
 from fastapi import FastAPI, HTTPException, Query, status
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.database import init_db, get_db, log_black_box
@@ -663,3 +665,17 @@ def get_fleet_pulse():
                 {"id": "ALT-3", "level": "PLUM", "text": "Urgent mRNA Vaccine consignment cleared for Stanford Medical Vault"}
             ]
         }
+
+# ----------------- DOCUMENTATION EXPORT -----------------
+
+@app.get("/api/documentation/pdf")
+def get_documentation_pdf():
+    pdf_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "FLEETWISE_NEXUS_TECHNICAL_DOCUMENTATION.pdf")
+    if not os.path.exists(pdf_path):
+        from build_documentation_pdf import build_pdf
+        build_pdf(pdf_path)
+    return FileResponse(
+        pdf_path,
+        media_type="application/pdf",
+        filename="FLEETWISE_NEXUS_TECHNICAL_DOCUMENTATION.pdf"
+    )
